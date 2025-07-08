@@ -22,7 +22,7 @@ const totalSlides = slides.children.length;
 let currentIndex = 0;
 
 function showSlide(index) {
-  slides.style.transform = `translateX(-${index * 100}%)`;
+  slides.style.transform = `translateX(-${(index * 100) / totalSlides}%)`;
 }
 
 function nextSlide() {
@@ -30,7 +30,7 @@ function nextSlide() {
   showSlide(currentIndex);
 }
 
-setInterval(nextSlide, 30000); // Cambia cada 30 segundos
+setInterval(nextSlide, 30000);  // Cambia cada 30 segundos
 
 // Inicializar Particles.js con efecto repulse al click
 particlesJS('particles-js',
