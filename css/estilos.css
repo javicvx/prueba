@@ -141,13 +141,13 @@ header.tesla-header.scrolled {
   margin-top: 70px;
   position: relative;
   overflow: hidden;
-  padding-bottom: 0x; /* para separar del contenido siguiente */
+  padding-bottom: 0;
 }
 
 .carousel {
   position: relative;
   width: 100%;
-  height: auto; /* cambio para que no corte la imagen */
+  height: 600px;
   max-height: 900px;
   overflow: hidden;
 }
@@ -161,10 +161,26 @@ header.tesla-header.scrolled {
 
 .slides img {
   width: calc(100% / 7);
-  height: auto; /* para que mantenga proporción */
-  max-height: 600px;
+  height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+/* Texto dinámico sobre el carrusel */
+.carousel-text {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  pointer-events: none;
+  z-index: 20;
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
 }
 
 .carousel-btn {
@@ -176,7 +192,7 @@ header.tesla-header.scrolled {
   font-size: 1rem;
   background: white;
   color: black;
-  border: 2px solid black;
+  border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -188,51 +204,55 @@ header.tesla-header.scrolled {
 .carousel-btn:active {
   background: black;
   color: white;
-  border-color: white;
 }
 
-/* Sección info con fondo de partículas */
+/* Flechas del carrusel */
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none;
+  z-index: 30;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+
+.carousel-arrow.next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+/* Sección info con nuevo diseño */
 
 .info-section {
   position: relative;
   background: #000;
   color: #fff;
-  padding: 120px 20px 100px; /* más espacio arriba para no quedar pegado */
+  padding: 120px 20px 100px;
   overflow: hidden;
   font-family: 'Century Gothic', sans-serif;
   z-index: 0;
 }
-
-.info-box {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  z-index: 10;
-  position: relative;
-}
-
-.info-box h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.info-box p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.info-box ul {
-  list-style: none;
-  padding: 0;
-}
-
-.info-box li {
-  font-size: 1.1rem;
-  margin: 12px 0;
-}
-
-/* Partículas */
 
 #particles-js {
   position: absolute;
@@ -241,5 +261,279 @@ header.tesla-header.scrolled {
   width: 100%;
   height: 100%;
   z-index: 1;
+  pointer-events: none;
+}
+
+.info-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  z-index: 10;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.left-side {
+  flex: 1 1 300px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.info-image {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.info-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.right-side {
+  flex: 2 1 500px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  user-select: text;
+  color: #eee;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.right-side:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 900px) {
+  .info-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left-side,
+  .right-side {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .info-title {
+    font-size: 2.2rem;
+  }
+
+  .right-side {
+    font-size: 1.1rem;
+    padding: 20px 25px;
+  }
+}
+
+/* NUEVA SECCIÓN PROYECTOS */
+
+.projects-section {
+  background-color: #121212;
+  color: #ddd;
+  padding: 80px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.left-projects {
+  flex: 1 1 350px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.left-projects img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.left-projects img:hover {
+  transform: scale(1.05);
+}
+
+.project-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.project-btn {
+  background: #222;
+  border: none;
+  padding: 8px 15px;
+  color: #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.project-btn:hover,
+.project-btn.active {
+  background: #00b894;
+  color: white;
+}
+
+.right-projects {
+  flex: 1 1 450px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #00b894;
+}
+
+.projects-features {
+  list-style: none;
+  padding-left: 0;
+}
+
+.projects-features li {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Íconos con emojis */
+.icon-hosting::before {
+  content: "🌐";
+  font-size: 1.5rem;
+}
+
+.icon-maintenance::before {
+  content: "🛠️";
+  font-size: 1.5rem;
+}
+
+.icon-delivery::before {
+  content: "🚚";
+  font-size: 1.5rem;
+}
+
+.btn-plans {
+  background: #00b894;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  width: max-content;
+  cursor: pointer;
+  align-self: start;
+  transition: background-color 0.3s ease;
+}
+
+.btn-plans:hover {
+  background: #019875;
+}
+
+/* Rating estrellas */
+
+.rating {
+  display: flex;
+  gap: 10px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rating .star {
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.rating .star.filled {
+  color: #00b894;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-projects, .right-projects {
+    max-width: 100%;
+  }
+
+  .right-projects {
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-plans {
+    width: 100%;
+  }
+}
+
+/* Botón WhatsApp flotante */
+
+#whatsapp-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.7);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: background-color 0.3s ease;
+}
+
+#whatsapp-btn:hover {
+  background-color: #128c44;
+}
+
+#whatsapp-btn img {
+  width: 32px;
+  height: 32px;
+  user-select: none;
   pointer-events: none;
 }

@@ -6,17 +6,22 @@
   <title>PixelORBIT</title>
   <link rel="stylesheet" href="css/estilos.css" />
   <link rel="icon" href="icon3.png" type="image/x-icon" />
+  <link rel="stylesheet" href="plugin/whatsapp-chat-support.css" />
+  <link rel="stylesheet" href="plugin/components/Font Awesome/css/font-awesome.min.css" />
 </head>
 <body>
 
   <header id="main-header" class="tesla-header">
     <div class="container">
-      <div class="logo"><img src="LOGO.png" alt="Logotipo de PixelORBIT" width="100px" /></div>
+      <div class="logo">
+        <img src="LOGO.png" alt="Logotipo de PixelORBIT" width="100px" />
+      </div>
       <nav>
         <ul class="nav-links">
           <li><a href="#">Inicio</a></li>
           <li><a href="#equipo">Equipo</a></li>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
         </ul>
         <div class="menu-toggle" aria-label="Abrir menú">☰</div>
       </nav>
@@ -34,28 +39,84 @@
         <img src="img/img6.jpg" alt="Imagen 6" />
         <img src="img/img7.jpg" alt="Imagen 7" />
       </div>
+      <div class="carousel-text"></div>
       <button class="carousel-btn">Conoce más</button>
+      <button class="carousel-arrow prev" aria-label="Anterior">‹</button>
+      <button class="carousel-arrow next" aria-label="Siguiente">›</button>
     </div>
   </main>
 
   <section class="info-section" id="servicios">
     <div id="particles-js"></div>
-    <div class="info-box">
-      <h2>Diseñamos tu presencia digital</h2>
-      <p>PixelORBIT es tu aliado en el desarrollo de sitios web modernos, optimizados y adaptables. Creamos experiencias 
-      digitales desde cero o renovamos tu sitio actual para destacar en internet.</p>
-      <ul>
-        <li>✅ Páginas Web Administrables</li>
-        <li>✅ Optimizadas para SEO</li>
-        <li>✅ Integración con Redes Sociales</li>
-        <li>✅ Formularios de Contacto Dinámicos</li>
-        <li>✅ Soporte y Mantenimiento</li>
-      </ul>
+    <div class="info-content">
+      <div class="left-side">
+        <h2 class="info-title">Diseñamos tu presencia digital</h2>
+        <img src="icon2.png" alt="Diseño digital" class="info-image" />
+      </div>
+      <div class="right-side">
+        <p class="info-description">
+          PixelORBIT es tu aliado en el desarrollo de sitios web modernos, optimizados y adaptables. Creamos experiencias digitales desde cero o renovamos tu sitio actual para destacar en internet. <br /><br />
+          ✅ Páginas Web Administrables <br />
+          ✅ Optimizadas para SEO <br />
+          ✅ Integración con Redes Sociales <br />
+          ✅ Formularios de Contacto Dinámicos <br />
+          ✅ Soporte y Mantenimiento
+        </p>
+      </div>
     </div>
   </section>
 
+  <!-- NUEVA SECCIÓN PROYECTOS -->
+  <section id="proyectos" class="projects-section">
+    <div class="projects-container">
+
+      <div class="left-projects">
+        <img id="project-image" src="img/proyecto-abogados.png" alt="Proyecto despacho de abogados" />
+        <div class="project-buttons">
+          <button class="project-btn active" data-img="img/proyecto-abogados.png">Despacho de abogados</button>
+          <button class="project-btn" data-img="img/proyecto-viajes.jpg">Agencia de viajes</button>
+          <button class="project-btn" data-img="img/proyecto-ropa.jpg">Marca de ropa</button>
+          <button class="project-btn" data-img="img/proyecto-extintores.jpg">Extintores</button>
+        </div>
+      </div>
+
+      <div class="right-projects">
+        <h2 class="projects-title">Nuestros Proyectos Destacados</h2>
+        <ul class="projects-features">
+          <li><span class="icon-hosting"></span> Hosting seguro y confiable</li>
+          <li><span class="icon-maintenance"></span> Mantenimiento continuo</li>
+          <li><span class="icon-delivery"></span> Entrega rápida y eficiente</li>
+        </ul>
+        <button class="btn-plans">Ver planes y precios</button>
+
+        <div class="rating">
+          <span class="star" data-value="1">&#9734;</span>
+          <span class="star" data-value="2">&#9734;</span>
+          <span class="star" data-value="3">&#9734;</span>
+          <span class="star" data-value="4">&#9734;</span>
+          <span class="star" data-value="5">&#9734;</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Botón WhatsApp flotante -->
+  <div id="whatsapp-btn" title="Contáctanos por WhatsApp">
+    <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="plugin/components/jQuery/jquery-1.11.3.min.js"></script>
+  <script src="plugin/components/moment/moment.min.js"></script>
+  <script src="plugin/components/moment/moment-timezone-with-data.min.js"></script>
+  <script src="plugin/whatsapp-chat-support.js"></script>
   <script src="js/script.js"></script>
   <script src="js/interactive.js"></script>
+  
+  <script>
+    $('#button-w').whatsappChatSupport({ defaultMsg : '' });
+  </script>
+
 </body>
 </html>
